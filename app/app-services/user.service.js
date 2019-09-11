@@ -15,6 +15,7 @@
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
+        service.saveQuestion = saveQuestion;
 
         return service;
 
@@ -44,6 +45,12 @@
 
         function Delete(_id) {
             return $http.delete('/api/users/' + _id).then(handleSuccess, handleError);
+        }
+
+        function saveQuestion(pergunta) {
+            console.log("saveQuestion2222");
+            //return $http.post('http://localhost:9050/api/pergunta', pergunta).then(handleSuccess, handleError);
+            return $http.post('/api/pergunta', pergunta).then(handleSuccess, handleError);
         }
 
         // private functions

@@ -83,3 +83,14 @@ function deleteUser(req, res) {
             res.status(400).send(err);
         });
 }
+
+function saveQuestion(req, res) {
+    console.log("saveQuestion11111");
+    userService.question(req.body)
+        .then(function () {
+            res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}

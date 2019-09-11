@@ -5,7 +5,9 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
+var dbPergunta = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
+dbPergunta.bind('perguntas');
 
 var service = {};
 
@@ -86,6 +88,22 @@ function create(userParam) {
             });
     }
 
+    return deferred.promise;
+}
+
+
+
+function question(pergunta) {
+    var deferred = Q.defer();
+        var perguntaString = _.omit(pergunta, 'pergunta');
+
+        dbPergunta.pergunta.insert(
+            perguntaString,
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
     return deferred.promise;
 }
 

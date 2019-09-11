@@ -1,0 +1,20 @@
+﻿<div>
+    <h1>Perguntas {{vm.user.firstName}}</h1>
+    
+    <div id="novaPergunta">
+        <form method="post">
+            <input type="text" placeholder="Digite aqui sua nova pergunta..." style="width: 504px;" ng-model="vm.novaPergunta"/> <button id="adicionaPergunta" ng-click="vm.savePergunta()"><b>+</b></button>
+        </form>
+
+    </div>
+<br/>
+    <div id="tablePerguntas">
+        <table id="perguntas" border=1>
+            <thead>
+                <th>
+                    <td><b><h3>Pergunta</h3></b></td>
+                </th>
+            </thead>
+        </table>
+    </div>
+</div>

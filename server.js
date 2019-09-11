@@ -14,6 +14,7 @@ var bodyParser = require('body-parser');
 // Se quiser estudar um pouco mais sobre JWT, pesquise aqui
 // https://jwt.io/introduction/
 var expressJwt = require('express-jwt');
+var cors = require('cors')
 // carrega as configurações mapeadas no json
 var config = require('config.json');
 // faz a leitura da porta que será utilizada para o app
@@ -55,6 +56,7 @@ app.use('/login', require('./controllers/login.controller'));
 app.use('/register', require('./controllers/register.controller'));
 app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
+app.use('/api/pergunta', require('./controllers/api/pergunta.controller'));
 
 
 // configuração do redirecionamento inicial é isso que indica o que vai acontecer quando for feita a chamada do 
@@ -63,6 +65,9 @@ app.get('/', function (req, res) {
     return res.redirect('/app');
 });
 
+
+app.use(cors());
+api.use(cors());
 // Por fim, a inicialização dos dois servers. O primeiro do app e o segundo para a API
 // start server
 var server = app.listen(port, function () {
