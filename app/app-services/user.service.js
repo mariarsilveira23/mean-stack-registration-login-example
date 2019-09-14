@@ -48,9 +48,9 @@
         }
 
         function saveQuestion(pergunta) {
-            console.log("saveQuestion2222");
-            //return $http.post('http://localhost:9050/api/pergunta', pergunta).then(handleSuccess, handleError);
-            return $http.post('/api/pergunta', pergunta).then(handleSuccess, handleError);
+            console.log("saveQuestion2222: " + pergunta);
+            //return $http.post('http://localhost:9050/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
+             return $http.post('/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
         }
 
         // private functions

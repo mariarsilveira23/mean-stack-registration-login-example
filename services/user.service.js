@@ -5,15 +5,16 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
-var dbPergunta = mongo.db(config.connectionString, { native_parser: true });
+//var dbPergunta = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
-dbPergunta.bind('perguntas');
+db.bind('perguntas');
 
 var service = {};
 
 service.authenticate = authenticate;
 service.getById = getById;
 service.create = create;
+service.question = question;
 service.update = update;
 service.delete = _delete;
 
@@ -94,10 +95,13 @@ function create(userParam) {
 
 
 function question(pergunta) {
+    console.log("INSERINDOOOOOOO..." + pergunta + " hehehe");
     var deferred = Q.defer();
         var perguntaString = _.omit(pergunta, 'pergunta');
 
-        dbPergunta.pergunta.insert(
+        console.log("perguntaString..." + perguntaString + " hehehe22222");
+
+        db.perguntas.insert(
             perguntaString,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);

@@ -38,6 +38,9 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cors());
+api.use(cors());
+
 // indicação dos parâmetros de sessão
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
@@ -66,8 +69,6 @@ app.get('/', function (req, res) {
 });
 
 
-app.use(cors());
-api.use(cors());
 // Por fim, a inicialização dos dois servers. O primeiro do app e o segundo para a API
 // start server
 var server = app.listen(port, function () {

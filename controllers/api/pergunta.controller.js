@@ -4,7 +4,7 @@ var router = express.Router();
 var userService = require('services/user.service');
 
 // routes
-router.post('/', saveQuestion);
+router.post('/saveQuestion', saveQuestion);
 
 module.exports = router;
 
