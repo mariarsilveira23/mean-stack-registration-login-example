@@ -10,6 +10,7 @@
 
         vm.user = {};
         vm.savePergunta = savePergunta;
+        vm.perguntas = []
 
         initController();
 
@@ -17,6 +18,10 @@
             // get current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
+            });
+
+            UserService.GetPerguntas().then(function (perguntas) {
+                vm.perguntas = perguntas;
             });
         }
 

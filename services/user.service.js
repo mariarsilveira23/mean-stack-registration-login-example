@@ -15,6 +15,7 @@ service.authenticate = authenticate;
 service.getById = getById;
 service.create = create;
 service.question = question;
+service.getPerguntas = getPerguntas;
 service.update = update;
 service.delete = _delete;
 
@@ -92,7 +93,20 @@ function create(userParam) {
     return deferred.promise;
 }
 
-
+function getPerguntas() {
+console.log("indo no banco ...");
+    var deferred = Q.defer();
+    db.perguntas.find().toArray(function(err, items) {
+        if (items) {  
+            deferred.resolve(items);
+        } else {            
+            deferred.resolve();
+        }
+        console.log(deferred.promise)
+    });
+    return deferred.promise;
+    
+}
 
 function question(pergunta) {
     console.log("INSERINDOOOOOOO..." + pergunta + " hehehe");

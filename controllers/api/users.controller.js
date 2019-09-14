@@ -85,7 +85,7 @@ function deleteUser(req, res) {
 }
 
 function saveQuestion(req, res) {
-    console.log("saveQuestion11111");
+    console.log("saveQuestion11111 heheeh");
     userService.question(req.body)
         .then(function () {
             res.sendStatus(200);

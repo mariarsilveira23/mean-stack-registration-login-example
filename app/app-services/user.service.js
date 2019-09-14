@@ -16,6 +16,7 @@
         service.Update = Update;
         service.Delete = Delete;
         service.saveQuestion = saveQuestion;
+        service.GetPerguntas = GetPerguntas;
 
         return service;
 
@@ -49,8 +50,13 @@
 
         function saveQuestion(pergunta) {
             console.log("saveQuestion2222: " + pergunta);
-            //return $http.post('http://localhost:9050/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
              return $http.post('/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
+        }
+
+        function GetPerguntas() {
+            console.log("GET PERGUNTAS");
+            //return $http.post('http://localhost:9050/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
+             return $http.get('/api/pergunta/getPerguntas').then(handleSuccess, handleError);
         }
 
         // private functions
