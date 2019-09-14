@@ -16,6 +16,7 @@
         service.Update = Update;
         service.Delete = Delete;
         service.saveQuestion = saveQuestion;
+        service.excluiPergunta = excluiPergunta;
         service.GetPerguntas = GetPerguntas;
 
         return service;
@@ -58,6 +59,13 @@
             //return $http.post('http://localhost:9050/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
              return $http.get('/api/pergunta/getPerguntas').then(handleSuccess, handleError);
         }
+
+        function excluiPergunta(_id) {
+            console.log("excluiPergunta1111111:   " + _id);
+            //return $http.post('http://localhost:9050/api/pergunta/saveQuestion', pergunta).then(handleSuccess, handleError);
+             return $http.post('/api/pergunta/excluiPergunta', _id._id).then(handleSuccess, handleError);
+        }
+
 
         // private functions
 

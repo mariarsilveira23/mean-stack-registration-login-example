@@ -10,6 +10,7 @@
 
         vm.user = {};
         vm.savePergunta = savePergunta;
+        vm.excluiPergunta = excluiPergunta;
         vm.perguntas = []
 
         initController();
@@ -49,6 +50,17 @@
 
                 vm.novaPergunta = null
             }
+        }
+        function excluiPergunta(_id) {
+            var questionExcluded = { key: _id }   
+            console.log('EXCLUIRRRRRRRR!!!!!!!!!!!!: ' + _id);  
+            UserService.excluiPergunta(questionExcluded)
+                .then(function () {
+                    FlashService.Success('Pergunta Excluída com sucesso');
+                })
+                .catch(function (error) {
+                    FlashService.Error(error);
+                });          
         }
     }
 

@@ -6,6 +6,7 @@ var userService = require('services/user.service');
 // routes
 router.post('/saveQuestion', saveQuestion);
 router.get('/getPerguntas', getPerguntas);
+router.post('/excluiPergunta', excluiPergunta);
 
 module.exports = router;
 
@@ -28,6 +29,18 @@ function getPerguntas(req, res) {
             } else {
                 res.sendStatus(404);
             }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+
+function excluiPergunta(req, res) {
+    console.log("excluiPergunta333:: " + req.key);
+    userService.excluiPergunta(req.params)
+        .then(function () {
+            res.sendStatus(200);
         })
         .catch(function (err) {
             res.status(400).send(err);

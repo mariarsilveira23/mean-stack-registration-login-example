@@ -16,6 +16,7 @@ service.getById = getById;
 service.create = create;
 service.question = question;
 service.getPerguntas = getPerguntas;
+service.excluiPergunta = excluiPergunta;
 service.update = update;
 service.delete = _delete;
 
@@ -181,6 +182,22 @@ function _delete(_id) {
     var deferred = Q.defer();
 
     db.users.remove(
+        { _id: mongo.helper.toObjectID(_id) },
+        function (err) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}
+
+
+function excluiPergunta(_id) {
+    console.log("excluindi de vdd; " + mongo.helper.toObjectID(_id))
+    var deferred = Q.defer();
+
+    db.perguntas.remove(
         { _id: mongo.helper.toObjectID(_id) },
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
